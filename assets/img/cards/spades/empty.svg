@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="242px" height="340px" viewBox="0 0 242 340" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>spades/empty</title>
+    <defs>
+        <path d="M10,0 L232,0 C237.522847,-1.01453063e-15 242,4.4771525 242,10 L242,330 C242,335.522847 237.522847,340 232,340 L10,340 C4.4771525,340 6.76353751e-16,335.522847 0,330 L0,10 C-6.76353751e-16,4.4771525 4.4771525,1.01453063e-15 10,0 Z" id="path-1"></path>
+        <filter x="-5.6%" y="-4.0%" width="111.2%" height="107.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="13.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="0" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.136746066 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Empty-Slots" transform="translate(-1968.000000, -41.000000)">
+            <g id="spades/empty" transform="translate(1968.000000, 41.000000)">
+                <g id="BG">
+                    <use fill-opacity="0.1" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <path stroke-opacity="0.0588122815" stroke="#FFFFFF" stroke-width="2" d="M232,1 L10,1 C7.51471863,1 5.26471863,2.00735931 3.63603897,3.63603897 C2.00735931,5.26471863 1,7.51471863 1,10 L1,330 C1,332.485281 2.00735931,334.735281 3.63603897,336.363961 C5.26471863,337.992641 7.51471863,339 10,339 L232,339 C234.485281,339 236.735281,337.992641 238.363961,336.363961 C239.992641,334.735281 241,332.485281 241,330 L241,10 C241,7.51471863 239.992641,5.26471863 238.363961,3.63603897 C236.735281,2.00735931 234.485281,1 232,1 Z" stroke-linejoin="square"></path>
+                </g>
+                <path d="M138.863278,195.448891 C153.15907,195.608484 161.953612,186.510511 157.116241,176.934051 C152.27887,167.357298 147.456418,165.202646 139.862827,158.259617 C132.265507,151.316589 121.21825,139.305969 121.270465,136.472973 C121.32641,139.305969 110.734172,151.316589 103.136852,158.259617 C95.5432609,165.202646 90.7245384,167.357298 85.8834379,176.934051 C81.046067,186.510511 89.8443383,195.608484 104.136401,195.448891 C113.94914,195.339189 118.365059,189.739718 120.166486,186.238882 L120.166486,190.820691 C120.166486,190.820691 117.03357,207.347766 94.9241372,209.156974 L91.3996071,209.156974 L91.3996071,211.732345 L151.603802,211.732345 L151.603802,209.156974 L148.075542,209.156974 C125.969839,207.347766 122.833193,190.820691 122.833193,190.820691 L122.833193,186.840492 C124.955371,190.345121 129.59507,195.345316 138.863278,195.448891" id="Pique" fill="#FFFFFF" opacity="0.2"></path>
+            </g>
+        </g>
+    </g>
+</svg>

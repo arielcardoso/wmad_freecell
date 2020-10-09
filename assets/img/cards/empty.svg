@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="242px" height="340px" viewBox="0 0 242 340" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>empty</title>
+    <defs>
+        <path d="M10,0 L232,0 C237.522847,-1.01453063e-15 242,4.4771525 242,10 L242,330 C242,335.522847 237.522847,340 232,340 L10,340 C4.4771525,340 6.76353751e-16,335.522847 0,330 L0,10 C-6.76353751e-16,4.4771525 4.4771525,1.01453063e-15 10,0 Z" id="path-1"></path>
+        <filter x="-5.6%" y="-4.0%" width="111.2%" height="107.9%" filterUnits="objectBoundingBox" id="filter-2">
+            <feGaussianBlur stdDeviation="13.5" in="SourceAlpha" result="shadowBlurInner1"></feGaussianBlur>
+            <feOffset dx="0" dy="0" in="shadowBlurInner1" result="shadowOffsetInner1"></feOffset>
+            <feComposite in="shadowOffsetInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.136746066 0" type="matrix" in="shadowInnerInner1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Empty-Slots" transform="translate(-40.000000, -40.000000)">
+            <g id="empty" transform="translate(40.000000, 40.000000)">
+                <g id="BG">
+                    <use fill-opacity="0.1" fill="#FFFFFF" fill-rule="evenodd" xlink:href="#path-1"></use>
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <path stroke-opacity="0.0588122815" stroke="#FFFFFF" stroke-width="2" d="M232,1 L10,1 C7.51471863,1 5.26471863,2.00735931 3.63603897,3.63603897 C2.00735931,5.26471863 1,7.51471863 1,10 L1,330 C1,332.485281 2.00735931,334.735281 3.63603897,336.363961 C5.26471863,337.992641 7.51471863,339 10,339 L232,339 C234.485281,339 236.735281,337.992641 238.363961,336.363961 C239.992641,334.735281 241,332.485281 241,330 L241,10 C241,7.51471863 239.992641,5.26471863 238.363961,3.63603897 C236.735281,2.00735931 234.485281,1 232,1 Z" stroke-linejoin="square"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

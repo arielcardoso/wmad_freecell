@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="242px" height="340px" viewBox="0 0 242 340" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>diamond/7</title>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Card-deck" transform="translate(-1368.000000, -60.000000)">
+            <g id="diamond/7" transform="translate(1368.000000, 60.000000)">
+                <polygon id="BG" fill="#FFFFFF" points="0 0 242 0 242 340 0 340"></polygon>
+                <g id="Symbol-/-Carreau" transform="translate(104.000000, 202.000000)" fill="#DB362A">
+                    <polygon id="Carreau" points="0 17.2264824 17.5 35 35 17.2264824 17.5 -0.546875"></polygon>
+                </g>
+                <g id="Symbol-/-Carreau" transform="translate(146.000000, 254.000000)" fill="#DB362A">
+                    <polygon id="Carreau" points="0 17.2264824 17.5 35 35 17.2264824 17.5 -0.546875"></polygon>
+                </g>
+                <g id="Symbol-/-Carreau" transform="translate(58.000000, 254.000000)" fill="#DB362A">
+                    <polygon id="Carreau" points="0 17.2264824 17.5 35 35 17.2264824 17.5 -0.546875"></polygon>
+                </g>
+                <g id="Symbol-/-Carreau" transform="translate(58.000000, 154.000000)" fill="#DB362A">
+                    <polygon id="Carreau" points="0 17.2264824 17.5 35 35 17.2264824 17.5 -0.546875"></polygon>
+                </g>
+                <g id="Symbol-/-Carreau" transform="translate(146.000000, 154.000000)" fill="#DB362A">
+                    <polygon id="Carreau" points="0 17.2264824 17.5 35 35 17.2264824 17.5 -0.546875"></polygon>
+                </g>
+                <g id="Symbol-/-Carreau" transform="translate(146.000000, 54.000000)" fill="#DB362A">
+                    <polygon id="Carreau" points="0 17.2264824 17.5 35 35 17.2264824 17.5 -0.546875"></polygon>
+                </g>
+                <g id="Symbol-/-Carreau" transform="translate(58.000000, 54.000000)" fill="#DB362A">
+                    <polygon id="Carreau" points="0 17.2264824 17.5 35 35 17.2264824 17.5 -0.546875"></polygon>
+                </g>
+                <g id="Small-Carreau" transform="translate(14.000000, 62.000000)" fill="#DB362A">
+                    <g id="Symbol-/-Carreau">
+                        <polygon id="Carreau" points="0 10.8824871 11.1111111 22.1105528 22.2222222 10.8824871 11.1111111 -0.345477387"></polygon>
+                    </g>
+                    <g id="Symbol-/-Carreau" transform="translate(191.777778, 195.889447)">
+                        <polygon id="Carreau" points="0 10.8824871 11.1111111 22.1105528 22.2222222 10.8824871 11.1111111 -0.345477387"></polygon>
+                    </g>
+                </g>
+                <g id="Letter-/-Rouge" transform="translate(10.000000, 8.000000)" fill="#DB362A" font-family="Helvetica" font-size="40" font-weight="normal">
+                    <text id="A">
+                        <tspan x="0" y="29">7</tspan>
+                    </text>
+                </g>
+                <g id="Letter-/-Rouge" transform="translate(215.000000, 310.000000) rotate(180.000000) translate(-215.000000, -310.000000) translate(202.000000, 286.000000)" fill="#DB362A" font-family="Helvetica" font-size="40" font-weight="normal">
+                    <text id="A">
+                        <tspan x="0" y="29">7</tspan>
+                    </text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
