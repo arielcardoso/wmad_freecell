@@ -8,6 +8,50 @@
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
 </head>
 <body>
+    <div id="overlay" ></div>
+    <div id="wrap">
+        <div id="start-screen" class="msg-screen" >
+            <h1>WMAD</h1>
+            <h2>Freecell Game</h2>
+            <p><small>By Ariel Cardoso</small></p>
+            <button id="btnStartGame" class="btn" >START</button>
+        </div>
+        <div id="win-screen" class="msg-screen" >
+            <h3>CONGRATULATIONS!!!</h3>
+            <h1>You won the game!</h1>
+            <button id="btnRestartGame" class="btn" >RESTART</button>
+        </div>
+        <div id="game-screen" >
+            <div class="header">
+                <div class="side-left">
+                    <div class="empty-slots">
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                        <div class="slot"></div>
+                    </div>
+                </div>
+                <div class="side-right">
+                    <div class="suit-slots">
+                        <div class="slot slot-hearts"></div>
+                        <div class="slot-spades slot"></div>
+                        <div class="slot-diamonds slot"></div>
+                        <div class="slot-clubs slot"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="columns">
+                <div class="col col_1"></div>
+                <div class="col col_2"></div>
+                <div class="col col_3"></div>
+                <div class="col col_4"></div>
+                <div class="col col_5"></div>
+                <div class="col col_6"></div>
+                <div class="col col_7"></div>
+                <div class="col col_8"></div>
+            </div>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
     <script src="assets/js/game.js" type="text/javascript" ></script>
