@@ -1,0 +1,134 @@
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+body {
+    background: #0B0C24;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+#wrap {
+    display: block;
+    padding: 30px;
+}
+.header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+/* Cards */
+.card {
+    width: 100px;
+    height: 140px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 2;
+    -moz-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    -webkit-box-shadow: 0 0 5px rgba(0,0,0,0.5);
+    box-shadow: 0 0 5px rgba(0,0,0,0.5);
+}
+.card img {
+    border-radius: 3px;
+}
+.card img {
+    width: 100%;
+}
+.columns {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Columns */
+.columns .col {
+    width: 100px;
+    min-height: 142px;
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    text-align: center;
+    background: url(../img/cards/empty.svg) no-repeat top center;
+    background-size: 100px auto;
+}
+
+/* Empty Slot */
+.slot {
+    position: relative;
+    display: inline-block;
+    width: 100px; height: 140px;
+    margin: 0;
+    background-size: 100px auto;
+    border-radius: 4px;
+    background-color: rgba(255,255,255, 0.1);
+    border: 1px inset rgba(255,255,255, 0.1);
+}
+.effect-hover {
+    opacity: .7;
+    transition: .25s ease-in;
+}
+
+/* Suit Slots */
+.suit-slots .slot {
+    width: 100px;
+}
+.slot-hearts {
+    background: url(../img/cards/hearts/empty.svg) no-repeat center center;
+    background-size: 100% auto;
+}
+.slot-spades {
+    background: url(../img/cards/spades/empty.svg) no-repeat center center;
+    background-size: 100% auto;
+}
+.slot-diamonds {
+    background: url(../img/cards/diamonds/empty.svg) no-repeat center center;
+    background-size: 100% auto;
+}
+.slot-clubs {
+    background: url(../img/cards/clubs/empty.svg) no-repeat center center;
+    background-size: 100% auto;
+}
+
+/* UI Screens */
+#overlay {
+    background-color: rgba(0,0,0, 0.5);
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 900;
+}
+.btn {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: green;
+    color: #fff;
+    border: 0px solid #0B0C24;
+    border-radius: 4px;
+    letter-spacing: 2px;
+    transition: all 0.3s ease-in-out;
+}
+.btn:hover {
+    background-color: darkgreen;
+    transform: scale(1.1);
+}
+.msg-screen {
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin-left: -150px;
+    margin-top: -150px;
+    background-color: rgba(255,255,255, 0.9);
+    border-radius: 6px;
+    padding: 15px;
+    width: 300px;
+    height: 200px;
+    text-align: center;
+    -webkit-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.5);
+    -moz-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.5);
+    box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.5);
+    z-index: 950;
+}
