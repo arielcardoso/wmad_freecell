@@ -1,5 +1,5 @@
 // Constants
-let CARDS = ['a','2','3','4','5','6','7','8','9','10','j','q','k'];
+
 let SUITS = ['hearts', 'spades', 'diamonds', 'clubs'];
 let SUIT_COLOR_ACCEPT = {
     'hearts' : ['clubs', 'spades'],
@@ -132,73 +132,78 @@ function gameWin() {
     $('#winner-screen').show();
 }
 
+function handleMoveCard(card, target){
+    // Update styles
+    card.detach().appendTo(target).removeAttr('style');
+    card.css('top', '0px');
+    card.css('left', '0px');
+    card.css('z-index', 200);
+    card.css('cursor','default');
+    card.draggable('option', 'revert', false);
+
+    // If target is a suit slot - Lock the drag option
+    if (target.parent().hasClass("suit-slots")) {
+        card.css('position', 'absolute');
+        card.draggable({
+            start: function(event, obj){
+                card.droppable('enable');
+            },
+        });
+    }
+
+    // If target is a column - Set the correct top and z-index
+    if (target.parent().hasClass("columns")) {
+        let top = 0;
+        if (target.children().length > 0) {
+            top = (target.children().length -1) * -100;
+        }
+        card.css({'z-index':'','top':top+'px'});
+        card.draggable({
+            start : function(event, obj){
+                $(this).draggable('option', 'revert', true);
+            }
+        });
+    }
+    
+    // Update movement count
+    MOVS++;
+}
+
 function handleDropInEmptySlots(event, obj, drop) {
-    //Check if slot is empty
+    // Check if slot is empty
     if (drop.children('.card').length) {
         return false;
     }
-    // Update draggable options
-    obj.draggable.detach().appendTo(drop).removeAttr('style');
-    obj.draggable.css('top', '0px');
-    obj.draggable.css('left', '0px');
-    obj.draggable.css('z-index', 200); //prevent overlay
-    obj.draggable.draggable('option', 'revert', false);
-    obj.draggable.draggable({
-        start: function(event, ui){
-            $(this).css('z-index', 100);
-            $(this).draggable('option', 'revert', true);
-            $('#'+ $(drop).attr('id') ).droppable('enable');
-        },
-    });
-
-    //Update movement count
-    MOVS++;
+    // Move Card
+    handleMoveCard(obj.draggable, drop);
 }
 
 function handleDropInColumns(event, obj, drop) {
     let card = obj.draggable;
 
-    // get the last card
-    let cardOnTop = $(drop).children().last();
+    // Get the last card
+    let cardOnTop = drop.children().last();
 
-    if ($(drop).children().length > 0) {
-        //check if is a valid obj
-        if ($(cardOnTop).data('suit') == "undefined") {
+    // If the column has cards
+    if (drop.children().length > 0) {
+        // Check the suit color
+        if (SUIT_COLOR_ACCEPT[cardOnTop.data('suit') ].includes(card.data('suit')) == false ) {
             return false;
         }
-
-        //check the suit color
-        if (SUIT_COLOR_ACCEPT[ $(cardOnTop).data('suit') ].includes($(card).data('suit')) == false ) {
+        // Check number sequence
+        if ((parseInt(card.data('number'))+1) != parseInt(cardOnTop.data('number'))) {
             return false;
         }
-
-        //check number
-        if (CARDS_ORDER[$(cardOnTop).data('number')].dropOn != $(card).data('number')) {
+    } else {
+        //Check if the card is the king
+        //Only the king can starts a new column
+        if (card.data('number') != 13) {
             return false;
         }
     }
 
-    // Organize cards on column
-    let cards = [obj.draggable];
-    $.each(cards, function(i, obj2) {
-        let card = $('#'+$(obj2).prop('id'));
-        card.draggable('option', 'revert', false);
-
-        let top = 0;
-        if ($(drop).children().length > 0) {
-            top = Number($(drop).children().last().css('top').replace('px','')) - ($('.card:first-child').height() - MARGIN_CARDS)
-        }
-
-        //reset the parameters
-        card.detach().appendTo(drop).removeAttr('style');
-        card.css({'z-index':'', 'position':'relative', 'left':'0px', 'top':top+'px'});
-        card.draggable({
-            start : function(event, obj){ $(this).draggable('option', 'revert', true); }
-        });
-    });
-
-    //Update movement count
-    MOVS++;
+    // Move the card
+    handleMoveCard(card, drop);
 }
 
 function handleDropInSuitSlots(event, obj, drop) {
