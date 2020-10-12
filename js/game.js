@@ -140,6 +140,11 @@ function handleDragStart(event, obj){
 }
 
 function handleDoubleClick(card){
+    // Disabled in cards inside suit slot
+    if (card.parent().parent().hasClass("suit-slots")) {
+        return;
+    }
+
     // Check if the card is the last child in the column
     if (card.is(':last-child') == false) {
         return;
@@ -183,15 +188,15 @@ function handleMoveCard(card, target){
     card.css('z-index', 200);
     card.css('cursor','default');
     card.draggable('option', 'revert', false);
+    card.draggable({
+        start : function(event, obj){
+            $(this).draggable('option', 'revert', true);
+        }
+    });
 
     // If target is a suit slot - Lock the drag option
     if (target.parent().hasClass("suit-slots")) {
         card.css('position', 'absolute');
-        card.draggable({
-            start: function(event, obj){
-                card.droppable('enable');
-            },
-        });
     }
 
     // If target is a column - Set the correct top and z-index
@@ -201,11 +206,6 @@ function handleMoveCard(card, target){
             top = (target.children().length -1) * -100;
         }
         card.css({'z-index':'','top':top+'px'});
-        card.draggable({
-            start : function(event, obj){
-                $(this).draggable('option', 'revert', true);
-            }
-        });
     }
     
     // Update movement count
