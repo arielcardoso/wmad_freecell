@@ -116,7 +116,35 @@ function handleDragStart(event, obj){
 }
 
 function handleDoubleClick(card){
-    
+    // Check if the card is the last child in the column
+    if (card.is(':last-child') == false) {
+        return;
+    }
+
+    // 1. Check if the can be stored in suit slots
+    let suitSlot = $('.suit-slots .slot-' + card.data("suit"));
+    // Check if the card is the ace
+    if (card.data("number") == 1) {
+        handleMoveCard(card, suitSlot);
+        return;
+    } else {
+        // Check the last card stored
+        if (suitSlot.length > 0) {
+            let lastCard = suitSlot.find('.card:last-child').data('number');
+            if (parseInt(card.data('number')) == (parseInt(lastCard)+1)) {
+                handleMoveCard(card, suitSlot);
+                return;
+            }
+        }
+    }
+
+    // 2. Check if there is an empty slot
+    $('.empty-slots .slot').each(function() {
+        if (!$(this).children('.card').length) {
+            handleMoveCard(card, $(this));
+            return;
+        }
+    });
 }
 
 function handleDragStop(event, obj){
