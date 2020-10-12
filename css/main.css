@@ -13,6 +13,7 @@ body {
 #wrap {
     display: block;
     padding: 30px;
+    height: 100%;
 }
 .header {
     display: flex;
