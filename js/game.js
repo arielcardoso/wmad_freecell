@@ -186,6 +186,11 @@ function handleMoveCard(card, target){
     
     // Update movement count
     MOVS++;
+
+    // Check if all cards are on suit slots 
+    if ($('.suit-slots .card').length == 52){
+        endGame();
+    }
 }
 
 function handleDropInEmptySlots(event, obj, drop) {
@@ -246,11 +251,6 @@ function handleDropInSuitSlots(event, obj, drop) {
     }
     // Move Card
     handleMoveCard(obj.draggable, drop);
-
-    // Check if all cards are on suit slots 
-    if ($('.suit-slots .card').length == 52){
-        endGame();
-    }
 }
 
 function shuffleArray(array) {
