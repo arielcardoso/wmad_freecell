@@ -9,8 +9,14 @@ let SUIT_COLOR_ACCEPT = {
 let MOVS = 0;
 let TIME = 0;
 
+$(document).ready(function(){
+    startScreen();
+    $("#btnStartGame").on("click", gameInit);
+    $("#btnRestartGame").on("click", startGame);
+})
+
 function gameInit() {
-    gameReset();
+    startGame();
 
     $('.suit-slots .slot').droppable({
         accept: '.card',
@@ -38,15 +44,30 @@ function gameInit() {
             handleDropInColumns(event, ui, $(this));
         }
     });
+
+    $('.columns .col .card').dblclick(function() {
+        handleDoubleClick($(this));
+    });
 }
 
-function gameReset() {
+function startScreen() {
+    $('#start-screen').show();
+    $('#win-screen').hide();
+    $('#overlay').hide();
+    $('#game-screen').hide();
+}
+
+function startGame() {
     $('#start-screen').hide();
-    $('#winner-screen').hide();
+    $('#win-screen').hide();
     $('#overlay').hide();
     $('#game-screen').show();
-
     newDeck();
+}
+
+function endGame() {
+    $('#overlay').show();
+    $('#win-screen').show();
 }
 
 function newDeck() {
@@ -94,25 +115,12 @@ function handleDragStart(event, obj){
 
 }
 
+function handleDoubleClick(card){
+    
+}
+
 function handleDragStop(event, obj){
     $('.columns .col').show().css('visibility', 'visible');
-}
-
-function shuffleArray(array) {
-    let currentIndex = array.length, temporaryValue, randomIndex;
-    while (0 !== currentIndex) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
-    }
-    return array;
-}
-
-function gameWin() {
-    $('#overlay').show();
-    $('#winner-screen').show();
 }
 
 function handleMoveCard(card, target){
@@ -208,18 +216,23 @@ function handleDropInSuitSlots(event, obj, drop) {
             return false;
         }
     }
-
     // Move Card
     handleMoveCard(obj.draggable, drop);
 
     // Check if all cards are on suit slots 
     if ($('.suit-slots .card').length == 52){
-        gameWin();
+        endGame();
     }
 }
 
-// ==============================================================================================
-$(document).ready(function(){
-    $("#btnStartGame").on("click", gameInit);
-    $("#btnRestartGame").on("click", gameReset);
-})
+function shuffleArray(array) {
+    let currentIndex = array.length, temporaryValue, randomIndex;
+    while (0 !== currentIndex) {
+        randomIndex = Math.floor(Math.random() * currentIndex);
+        currentIndex -= 1;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
+    }
+    return array;
+}
