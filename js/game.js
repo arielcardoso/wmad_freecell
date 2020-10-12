@@ -1,5 +1,4 @@
 // Constants
-
 let SUITS = ['hearts', 'spades', 'diamonds', 'clubs'];
 let SUIT_COLOR_ACCEPT = {
     'hearts' : ['clubs', 'spades'],
@@ -7,24 +6,8 @@ let SUIT_COLOR_ACCEPT = {
     'diamonds' : ['clubs', 'spades'],
     'clubs' : ['diamonds', 'hearts'],
 };
-let CARDS_ORDER = {
-    a: { dropOn:''  , dropAccept:'2' },
-    2: { dropOn:'a' , dropAccept:'3' },
-    3: { dropOn:'2' , dropAccept:'4' },
-    4: { dropOn:'3' , dropAccept:'5' },
-    5: { dropOn:'4' , dropAccept:'6' },
-    6: { dropOn:'5' , dropAccept:'7' },
-    7: { dropOn:'6' , dropAccept:'8' },
-    8: { dropOn:'7' , dropAccept:'9' },
-    9: { dropOn:'8' , dropAccept:'10'},
-    10:{ dropOn:'9' , dropAccept:'j' },
-    j: { dropOn:'10', dropAccept:'q' },
-    q: { dropOn:'j' , dropAccept:'k' },
-    k: { dropOn:'q' , dropAccept:''  }
-};
 let MOVS = 0;
 let TIME = 0;
-let MARGIN_CARDS = 40;
 
 function gameInit() {
     gameReset();
@@ -67,20 +50,20 @@ function gameReset() {
 }
 
 function newDeck() {
-    let deck = [];
-
     // Erase all cards
     $('.card').remove();
 
     // Create cards
+    let deck = [];
     $.each(SUITS, function(i, suit){
-        $.each(CARDS, function(j, card){
-            let newCard = $('<div id="card'+ suit + card +'" class="card" data-suit="'+suit+'" data-number="'+card+'">'
-                + '  <img class="card-'+card+' '+suit+'" src="assets/img/cards/'+suit+'/'+card+'.svg">'
+        for (let i=1; i<=13; i++) {
+            let newCard = $('<div id="card'+ suit + i +'" class="card" data-suit="'+ suit +'" data-number="'+ i +'">'
+                + '<img src="img/cards/'+ suit + '/' + i +'.svg">'
                 + '</div>');
-                deck.push(newCard);
-        });
+            deck.push(newCard);
+        }
     });
+    console.log(deck);
 
     // Fill columns with cards
     let column = 1, top = 0;
@@ -102,7 +85,7 @@ function newDeck() {
     // Draggable option
     $('.card').draggable({
         revert: true,
-        start : handleDragStart,
+        //start : handleDragStart,
         stop  : handleDragStop
     })
 }
@@ -207,38 +190,27 @@ function handleDropInColumns(event, obj, drop) {
 }
 
 function handleDropInSuitSlots(event, obj, drop) {
-    //Check if is the ace
-    if (drop.children('.card').length == 0 && obj.draggable.data('number') != 'a' ) {
+    // Check if is the ace
+    if (drop.children('.card').length == 0 && obj.draggable.data('number') != '1' ) {
         return false;
     }
-
-    // Check the type of suit
+    // Check the suit type
     if (drop.hasClass("slot-" + obj.draggable.data("suit")) == false) {
         return false;
     }
-
     // Check if is a valid card
     if (drop.children('.card').length > 0) {
         let card = $(obj.draggable);
         let topCard = $(drop.children('.card').last());
     
         // Is card next in sequence?
-        if ( topCard.data('suit') != card.data('suit') || CARDS_ORDER[topCard.data('number')].dropAccept != card.data('number') ) {
-            //if ( gGameOpts.showTips ) null; // TODO
+        if (topCard.data('suit') != card.data('suit') || parseInt(card.data('number')) != (parseInt(topCard.data('number'))+1)) {
             return false;
         }
     }
 
-    // Change cards properties to keep them on suit slots
-    obj.draggable.detach().appendTo($(drop)).removeAttr('style');
-    obj.draggable.draggable('option', 'revert', false);
-    obj.draggable.css({ position:'absolute', top:'0px', left:'0px' });
-    obj.draggable.css('z-index', $(drop).find('.card').length); // set index to prevent 
-    obj.draggable.draggable('disable');
-    obj.draggable.css('cursor','default');
-
-    //Update movement count
-    MOVS++;
+    // Move Card
+    handleMoveCard(obj.draggable, drop);
 
     // Check if all cards are on suit slots 
     if ($('.suit-slots .card').length == 52){
