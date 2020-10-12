@@ -17,9 +17,13 @@
             <button id="btnStartGame" class="btn" >START</button>
         </div>
         <div id="win-screen" class="msg-screen" >
-            <h3>CONGRATULATIONS!!!</h3>
-            <h1>You won the game!</h1>
-            <button id="btnRestartGame" class="btn" >RESTART</button>
+            <h4>CONGRATULATIONS!!!</h4>
+            <h2>You won!</h2>
+            <div class="stats">
+                <div class="moves">MOVES <span>0</span></div>
+                <div class="time">TIME <span>00:00</span></div>
+            </div>
+            <button class="btn btnRestartGame" >RESTART</button>
         </div>
         <div id="game-screen" >
             <div class="header">
@@ -29,6 +33,16 @@
                         <div class="slot"></div>
                         <div class="slot"></div>
                         <div class="slot"></div>
+                    </div>
+                </div>
+                <div class="score">
+                    <h2>WMAD Freecell</h2>
+                    <div class="stats">
+                        <div class="moves">MOVES <span>0</span></div>
+                        <div class="time">TIME <span>00:00</span></div>
+                    </div>
+                    <div class="action">
+                        <button class="btn btnRestartGame">RESTART</button>
                     </div>
                 </div>
                 <div class="side-right">

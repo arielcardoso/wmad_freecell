@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Play:wght@400;700&display=swap');
+
 *, *:before, *:after {
     box-sizing: border-box;
 }
@@ -6,6 +8,7 @@ body {
     height: 100vh;
     margin: 0;
     padding: 0;
+    font-family: 'Play', sans-serif;
 }
 #wrap {
     display: block;
@@ -61,7 +64,6 @@ body {
     background-size: 100px auto;
     border-radius: 4px;
     background-color: rgba(255,255,255, 0.1);
-    border: 1px inset rgba(255,255,255, 0.1);
 }
 .effect-hover {
     opacity: .7;
@@ -105,13 +107,14 @@ body {
     cursor: pointer;
     background-color: green;
     color: #fff;
-    border: 0px solid #0B0C24;
+    border: 0;
     border-radius: 4px;
     letter-spacing: 2px;
     transition: all 0.3s ease-in-out;
 }
 .btn:hover {
-    background-color: darkgreen;
+    background-color: rgb(12, 173, 12);
+    border: 0;
     transform: scale(1.1);
 }
 .msg-screen {
@@ -131,4 +134,47 @@ body {
     -moz-box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.5);
     box-shadow: 0px 0px 19px 0px rgba(0,0,0,0.5);
     z-index: 950;
+}
+
+.score {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    width: 300px;
+    /* border: 2px solid #fff; */
+    text-align: center;
+    color: #fff;
+}
+.score h2 {
+    margin-top: 0;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255,255,255, 0.1);
+}
+.stats {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+}
+.stats .moves, 
+.stats .time{
+    flex: 1;
+}
+.stats .moves span, 
+.stats .time span{
+    color: yellow;
+    font-weight: bold;
+}
+#win-screen h4 {
+    margin: 1rem 0 0;
+}
+#win-screen h2 {
+    padding: 0;
+    margin: 0 0 2rem;
+}
+#win-screen .stats .moves span, 
+#win-screen .stats .time span {
+    color: brown;
+}
+#win-screen button {
+    margin-top: 1.5rem;
 }

@@ -6,18 +6,21 @@ let SUIT_COLOR_ACCEPT = {
     'diamonds' : ['clubs', 'spades'],
     'clubs' : ['diamonds', 'hearts'],
 };
-let MOVS = 0;
-let TIME = 0;
+let MOVES = 0;
+let TIMER;
+let START_TIME;
 
 $(document).ready(function(){
     startScreen();
-    $("#btnStartGame").on("click", gameInit);
-    $("#btnRestartGame").on("click", startGame);
+    gameInit();
 })
 
 function gameInit() {
-    startGame();
+    // Create button events
+    $("#btnStartGame").on("click", startGame);
+    $(".btnRestartGame").on("click", startGame);
 
+    // Create drag and drop events
     $('.suit-slots .slot').droppable({
         accept: '.card',
         hoverClass: 'effect-hover',
@@ -44,13 +47,10 @@ function gameInit() {
             handleDropInColumns(event, ui, $(this));
         }
     });
-
-    $('.columns .col .card').dblclick(function() {
-        handleDoubleClick($(this));
-    });
 }
 
 function startScreen() {
+    // Show start screen modal
     $('#start-screen').show();
     $('#win-screen').hide();
     $('#overlay').hide();
@@ -58,14 +58,39 @@ function startScreen() {
 }
 
 function startGame() {
+    // Hide modals
     $('#start-screen').hide();
     $('#win-screen').hide();
     $('#overlay').hide();
     $('#game-screen').show();
+
+    // Create the cards
     newDeck();
+
+    // Add double click event on cards
+    $('.card').dblclick(function() {
+        handleDoubleClick($(this));
+    });
+
+    // Update moves and timer
+    MOVES = 0;
+    $('.moves span').html(MOVES);
+    START_TIME = new Date();
+    TIMER = setInterval(getDate, 1000);
+}
+
+function getDate() {
+    let date = new Date();
+    let difference = (date.getTime() - START_TIME.getTime()) / 1000;
+    difference.toFixed(0);
+    
+    let minutes = ("0" + parseInt(difference / 60)).slice(-2);
+    let seconds = ("0" + parseInt(difference % 60)).slice(-2);
+    $('.time span').html(`${minutes}:${seconds}`);
 }
 
 function endGame() {
+    TIMER = null;
     $('#overlay').show();
     $('#win-screen').show();
 }
@@ -84,7 +109,6 @@ function newDeck() {
             deck.push(newCard);
         }
     });
-    console.log(deck);
 
     // Fill columns with cards
     let column = 1, top = 0;
@@ -185,7 +209,8 @@ function handleMoveCard(card, target){
     }
     
     // Update movement count
-    MOVS++;
+    MOVES++;
+    $('.moves span').html(MOVES);
 
     // Check if all cards are on suit slots 
     if ($('.suit-slots .card').length == 52){
