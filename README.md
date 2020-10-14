@@ -16,6 +16,7 @@ Any cell card of any cascade may be moved to build on a tableau, or moved to an 
 The top card of each cascade begins a tableau.
 Tableaux must be built down by alternating colors.
 Foundations are built up by suit.
+
 The game is won after all cards are moved to their foundation piles.
 
 More info:
