@@ -169,8 +169,11 @@ function handleDoubleClick(card){
 
     // 2. Check if there is an empty slot
     let firstEmptySlot = $('.empty-slots .slot').not(":has(.card)").first();
-    handleMoveCard(card, firstEmptySlot);
-    return;
+    if (firstEmptySlot.length) {
+        console.log(firstEmptySlot);
+        handleMoveCard(card, firstEmptySlot);
+        return;
+    }
 }
 
 function handleDragStop(event, obj){
